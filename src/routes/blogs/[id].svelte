@@ -23,7 +23,6 @@
 <script lang="ts">
 	import type { Article } from '$lib/type/article';
 	export let article: Article;
-	console.log(`details article`, article);
 </script>
 
 {#if article}
