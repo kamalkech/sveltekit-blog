@@ -1,22 +1,18 @@
 <script context="module">
 	export async function load({ page, fetch, session, context }) {
-		if (page.path === '/') {
-			const url = `https://jsonplaceholder.typicode.com/posts?_limit=5`;
-			const res = await fetch(url);
-			if (res.ok) {
-				return {
-					props: {
-						articles: await res.json()
-					}
-				};
-			}
+		const url = `https://jsonplaceholder.typicode.com/posts?_limit=5`;
+		const res = await fetch(url);
+		if (res.ok) {
 			return {
-				status: res.status,
-				error: new Error(`Could not load ${url}`)
+				props: {
+					articles: await res.json()
+				}
 			};
-		} else {
-			return {};
 		}
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
 	}
 </script>
 
